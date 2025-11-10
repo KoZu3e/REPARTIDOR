@@ -1,62 +1,115 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { MapPinned, Package, PiggyBank, User2 } from "lucide-react";
+import { useDelivery } from "@/context/delivery";
+import { useState } from "react";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+  const { driverName, status, setStatus } = useDelivery();
+  const [available, setAvailable] = useState(status !== "Ocupado" && status !== "En entrega");
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
+  const toggleAvailable = () => {
+    const next = !available;
+    setAvailable(next);
+    setStatus(next ? "Disponible" : "Ocupado");
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
+    <div className="min-h-screen pb-20">
+      <header className="max-w-md mx-auto px-4 pt-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-semibold">¡Hola, {driverName}! 👋</h1>
+            <p className="text-sm text-muted-foreground">Inicio Repartidor</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <span
+              className={`text-xs px-2 py-1 rounded-full ${
+                status === "En entrega"
+                  ? "bg-primary/10 text-primary"
+                  : available
+                  ? "bg-green-100 text-green-700"
+                  : "bg-amber-100 text-amber-700"
+              }`}
+            >
+              {status}
+            </span>
+            <button
+              onClick={toggleAvailable}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                available ? "bg-primary" : "bg-gray-300"
+              }`}
+              aria-label="Cambiar disponibilidad"
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow ${
+                  available ? "translate-x-5" : "translate-x-1"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-md mx-auto px-4 py-6 space-y-4">
+        <section className="grid grid-cols-2 gap-4">
+          <Link to="/pedidos" className="group rounded-2xl bg-secondary p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                <Package className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-medium">Pedidos Asignados</p>
+                <p className="text-xs text-muted-foreground">Revisa y gestiona pedidos</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link to="/mapa" className="group rounded-2xl bg-secondary p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                <MapPinned className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-medium">Mapa y Ruta</p>
+                <p className="text-xs text-muted-foreground">Encuentra el mejor camino</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link to="/ganancias" className="group rounded-2xl bg-secondary p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                <PiggyBank className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-medium">Mis Ganancias</p>
+                <p className="text-xs text-muted-foreground">Resumen y filtros</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link to="/perfil" className="group rounded-2xl bg-secondary p-4 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                <User2 className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-medium">Perfil</p>
+                <p className="text-xs text-muted-foreground">Información personal</p>
+              </div>
+            </div>
+          </Link>
+        </section>
+
+        <section className="rounded-2xl bg-white p-4 shadow-sm border">
+          <h2 className="font-semibold mb-2">Consejos</h2>
+          <ul className="text-sm text-muted-foreground list-disc ml-5 space-y-1">
+            <li>Activa tu disponibilidad para recibir pedidos.</li>
+            <li>Revisa el mapa antes de iniciar la entrega.</li>
+            <li>Usa mensajes rápidos para comunicarte con el cliente.</li>
+          </ul>
+        </section>
+      </main>
     </div>
   );
 }
