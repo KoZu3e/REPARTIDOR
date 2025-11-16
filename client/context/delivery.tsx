@@ -31,7 +31,7 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
       customer: "María Pérez",
       address: "Av. Reforma 123, Centro",
       distanceKm: 2.1,
-      earnings: 65,
+      earnings: 6500,
       status: "pendiente",
     },
     {
@@ -39,7 +39,7 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
       customer: "Juan López",
       address: "Calle Sol 456, Norte",
       distanceKm: 3.4,
-      earnings: 52,
+      earnings: 5200,
       status: "pendiente",
     },
   ]);
