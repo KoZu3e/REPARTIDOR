@@ -11,8 +11,8 @@ import Pedidos from "./pages/Pedidos";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
 import Mapa from "./pages/Mapa";
+import Ganancias from "./pages/Ganancias";
 import BottomNav from "./components/BottomNav";
-import { Ganancias } from "./pages/Placeholders";
 
 const queryClient = new QueryClient();
 
