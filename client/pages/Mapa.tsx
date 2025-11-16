@@ -84,8 +84,8 @@ export default function Mapa() {
               <p className="text-xs text-muted-foreground mt-1">Distancia: 2.4 km</p>
               <div className="mt-2 space-y-1 text-xs text-muted-foreground">
                 <p>Base: $1.500 CLP</p>
-                <p>Propina: $500 CLP</p>
-                <p>Distancia: $200 CLP</p>
+                <p>Propina: $800 CLP</p>
+                <p>Distancia: $900 CLP</p>
               </div>
             </div>
 
