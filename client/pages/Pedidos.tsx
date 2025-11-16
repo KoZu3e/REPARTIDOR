@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDelivery } from "@/context/delivery";
 import Modal from "@/components/Modal";
 
 export default function Pedidos() {
   const { orders, acceptOrder, rejectOrder } = useDelivery();
+  const navigate = useNavigate();
   const [incomingId, setIncomingId] = useState<string | null>(null);
   const [timer, setTimer] = useState(20);
+  const [showToast, setShowToast] = useState(false);
 
   // Simulate a new incoming order once after mount
   useEffect(() => {
@@ -31,7 +34,7 @@ export default function Pedidos() {
               customer: "Cliente nuevo",
               address: "Calle Luna 789, Sur",
               distanceKm: 1.8,
-              earnings: 48,
+              earnings: 3200,
               status: "pendiente" as const,
             },
             ...orders,
@@ -43,6 +46,8 @@ export default function Pedidos() {
   const onAccept = (id: string) => {
     acceptOrder(id);
     setIncomingId(null);
+    setShowToast(true);
+    setTimeout(() => navigate("/mapa"), 1000);
   };
 
   const onReject = (id: string) => {
@@ -63,7 +68,7 @@ export default function Pedidos() {
               </div>
               <div className="text-right">
                 <p className="text-sm text-muted-foreground">{o.distanceKm.toFixed(1)} km</p>
-                <p className="font-semibold">${o.earnings.toFixed(0)} MXN</p>
+                <p className="font-semibold text-primary">${o.earnings.toLocaleString("es-CL")} CLP</p>
               </div>
             </div>
             <div className="mt-3 flex gap-2">
@@ -104,6 +109,12 @@ export default function Pedidos() {
           </div>
         </div>
       </Modal>
+
+      {showToast && (
+        <div className="fixed top-4 left-4 right-4 z-50 max-w-md mx-auto bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-lg animate-pulse">
+          ✓ Pedido aceptado
+        </div>
+      )}
     </div>
   );
 }
