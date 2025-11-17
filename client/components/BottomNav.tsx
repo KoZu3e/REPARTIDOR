@@ -2,8 +2,10 @@ import { NavLink } from "react-router-dom";
 import { Home, MapPinned, Package, User2, TrendingUp } from "lucide-react";
 
 const tabClass = ({ isActive }: { isActive: boolean }) =>
-  `flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
-    isActive ? "text-primary" : "text-muted-foreground"
+  `flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 ${
+    isActive
+      ? "text-primary scale-105 -translate-y-0.5"
+      : "text-muted-foreground hover:scale-100"
   }`;
 
 export default function BottomNav() {
