@@ -50,16 +50,16 @@ export default function Perfil() {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-24">
-      <header className="pt-6 pb-4 text-center border-b">
+    <div className="min-h-screen bg-white pb-24 animate-fade-in">
+      <header className="pt-6 pb-4 text-center border-b animate-fade-in">
         <h1 className="text-2xl font-semibold text-foreground">Perfil</h1>
       </header>
 
       <main className="max-w-md mx-auto px-4 py-6 space-y-6">
         {/* Profile Photo Section */}
-        <div className="flex justify-center">
+        <div className="flex justify-center animate-scale-in" style={{ animationDelay: "50ms" }}>
           <div className="relative">
-            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg">
+            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg card-animated hover:shadow-xl">
               <span className="text-4xl font-bold text-white">JP</span>
             </div>
             {isEditing && (
@@ -75,7 +75,7 @@ export default function Perfil() {
 
         {/* Profile Info */}
         <div className="space-y-3">
-          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm card-animated animate-scale-in" style={{ animationDelay: "100ms" }}>
             <label className="text-xs font-medium text-muted-foreground uppercase">Nombre</label>
             {isEditing ? (
               <input
@@ -89,7 +89,7 @@ export default function Perfil() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm card-animated animate-scale-in" style={{ animationDelay: "150ms" }}>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-muted-foreground" />
               <label className="text-xs font-medium text-muted-foreground uppercase">Teléfono</label>
@@ -107,7 +107,7 @@ export default function Perfil() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm card-animated animate-scale-in" style={{ animationDelay: "200ms" }}>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-muted-foreground" />
               <label className="text-xs font-medium text-muted-foreground uppercase">Email</label>
@@ -124,7 +124,7 @@ export default function Perfil() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
+          <div className="rounded-2xl border border-border bg-white p-4 shadow-sm card-animated animate-scale-in" style={{ animationDelay: "250ms" }}>
             <div className="flex items-center gap-2">
               <Car className="w-4 h-4 text-muted-foreground" />
               <label className="text-xs font-medium text-muted-foreground uppercase">Vehículo</label>
@@ -174,11 +174,11 @@ export default function Perfil() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 animate-scale-in" style={{ animationDelay: "300ms" }}>
           {!isEditing ? (
             <button
               onClick={handleEdit}
-              className="h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-95 active:opacity-90"
+              className="h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:shadow-md hover:opacity-95 active:scale-95 transition-all duration-150 btn-ripple"
             >
               Editar información
             </button>
@@ -186,7 +186,7 @@ export default function Perfil() {
             <>
               <button
                 onClick={handleSave}
-                className="h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-95 active:opacity-90"
+                className="h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:shadow-md hover:opacity-95 active:scale-95 transition-all duration-150 btn-ripple animate-scale-in"
               >
                 Guardar cambios
               </button>
@@ -195,7 +195,7 @@ export default function Perfil() {
                   setIsEditing(false);
                   setEditData(data);
                 }}
-                className="h-12 rounded-xl bg-muted text-foreground font-semibold hover:bg-gray-200 active:opacity-90"
+                className="h-12 rounded-xl bg-muted text-foreground font-semibold hover:bg-gray-200 active:scale-95 transition-all duration-150"
               >
                 Cancelar
               </button>
@@ -204,7 +204,7 @@ export default function Perfil() {
 
           <button
             onClick={handleLogout}
-            className="h-12 rounded-xl text-primary border-2 border-primary font-semibold hover:bg-primary/5 active:opacity-90"
+            className="h-12 rounded-xl text-primary border-2 border-primary font-semibold hover:bg-primary/5 active:scale-95 transition-all duration-150"
           >
             Cerrar sesión
           </button>
