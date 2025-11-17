@@ -10,9 +10,9 @@ const tabClass = ({ isActive }: { isActive: boolean }) =>
 
 export default function BottomNav() {
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-50 border-t bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70">
+    <nav className="fixed bottom-0 inset-x-0 z-50 border-t bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 animate-fade-in">
       <div className="mx-auto max-w-md px-4">
-        <div className="grid grid-cols-5 py-2">
+        <div className="grid grid-cols-5 py-2 gap-0.5">
           <NavLink to="/" className={tabClass} end>
             <Home className="h-5 w-5" />
             <span>Inicio</span>
