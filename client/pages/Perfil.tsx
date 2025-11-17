@@ -215,8 +215,8 @@ export default function Perfil() {
 
       {/* Confirm Save Modal */}
       {modal === "confirm-save" && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40">
-          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 animate-fade-in">
+          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6 animate-slide-in-up">
             <h2 className="text-lg font-semibold text-foreground mb-2">Confirmar cambios</h2>
             <p className="text-muted-foreground mb-4">
               ¿Deseas guardar los cambios? No podrás modificar esta información durante los próximos 30 días.
@@ -241,8 +241,8 @@ export default function Perfil() {
 
       {/* Phone Verify Modal */}
       {modal === "phone-verify" && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40">
-          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 animate-fade-in">
+          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6 animate-slide-in-up">
             <h2 className="text-lg font-semibold text-foreground mb-2">Verificación requerida</h2>
             <p className="text-muted-foreground mb-4">
               Para cambiar tu número de teléfono, debe ser verificado. Recibirás un SMS o llamada de confirmación.
@@ -267,8 +267,8 @@ export default function Perfil() {
 
       {/* Photo Verify Modal */}
       {modal === "photo-verify" && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40">
-          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 animate-fade-in">
+          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6 animate-slide-in-up">
             <h2 className="text-lg font-semibold text-foreground mb-2">Cambiar foto de perfil</h2>
             <p className="text-muted-foreground mb-4">
               Selecciona una foto clara de frente para actualizar tu perfil.
@@ -293,8 +293,8 @@ export default function Perfil() {
 
       {/* Logout Confirmation Modal */}
       {modal === "logout" && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40">
-          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 animate-fade-in">
+          <div className="w-full sm:max-w-md sm:rounded-2xl sm:shadow-xl sm:mx-4 bg-white p-6 animate-slide-in-up">
             <h2 className="text-lg font-semibold text-foreground mb-2">¿Cerrar sesión?</h2>
             <p className="text-muted-foreground mb-4">
               Deberás ingresar nuevamente con tu correo y contraseña.
