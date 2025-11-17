@@ -152,7 +152,8 @@
   }
 
   .card-animated:active {
-    @apply shadow-sm scale-98;
+    @apply shadow-sm;
+    transform: scale(0.98);
   }
 
   /* List stagger animation */
