@@ -122,3 +122,61 @@
     white-space: pre;
   }
 }
+
+@layer components {
+  /* Button animations */
+  .btn-interactive {
+    @apply transition-all duration-150 active:scale-95;
+  }
+
+  .btn-ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-ripple::after {
+    content: "";
+    @apply absolute inset-0 rounded-full bg-white opacity-0;
+  }
+
+  .btn-ripple:active::after {
+    @apply animate-ripple-pulse;
+  }
+
+  /* Card animations */
+  .card-animated {
+    @apply transition-all duration-200;
+  }
+
+  .card-animated:hover {
+    @apply shadow-md;
+  }
+
+  .card-animated:active {
+    @apply shadow-sm scale-98;
+  }
+
+  /* List stagger animation */
+  .list-item-animated {
+    @apply animate-scale-in;
+  }
+
+  /* Smooth transitions for all inputs */
+  input,
+  textarea,
+  select {
+    @apply transition-all duration-200;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply shadow-sm;
+  }
+
+  /* Smooth color transitions */
+  button,
+  a,
+  [role="button"] {
+    @apply transition-colors duration-150;
+  }
+}
