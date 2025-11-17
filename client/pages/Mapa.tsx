@@ -24,9 +24,9 @@ export default function Mapa() {
   const strokeDashoffset = circumference - (timer / 60) * circumference;
 
   return (
-    <div className="min-h-screen pb-20 bg-white">
+    <div className="min-h-screen pb-20 bg-white animate-fade-in">
       {/* Simplified Map */}
-      <div className="relative h-96 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
+      <div className="relative h-96 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden animate-fade-in" style={{ animationDelay: "50ms" }}>
         {/* Route visualization */}
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
           {/* Dashed route line */}
@@ -75,8 +75,8 @@ export default function Mapa() {
       </div>
 
       {/* Floating Card (Bottom) */}
-      <div className="fixed bottom-24 left-4 right-4 max-w-md mx-auto z-40">
-        <div className="bg-white rounded-2xl shadow-lg border p-4">
+      <div className="fixed bottom-24 left-4 right-4 max-w-md mx-auto z-40 animate-slide-in-up">
+        <div className="bg-white rounded-2xl shadow-lg border p-4 card-animated">
           <div className="flex items-start justify-between mb-3">
             <div>
               <p className="text-sm text-muted-foreground">Ganancia total</p>
@@ -90,7 +90,7 @@ export default function Mapa() {
             </div>
 
             {/* Timer Circle */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center animate-bounce-subtle">
               <svg width="100" height="100" viewBox="0 0 100 100" className="transform -rotate-90">
                 <circle
                   cx="50"
@@ -121,16 +121,16 @@ export default function Mapa() {
           <div className="mt-4 space-y-2">
             <button
               onClick={handleTakePedido}
-              className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-95 active:opacity-90"
+              className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:shadow-md hover:opacity-95 active:scale-95 transition-all duration-150 btn-ripple"
             >
               Tomar Pedido
             </button>
             <div className="flex gap-2">
-              <button className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary flex items-center justify-center gap-2">
+              <button className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary active:scale-95 transition-all duration-150 flex items-center justify-center gap-2">
                 <MessageCircle className="w-4 h-4 text-primary" />
                 <span className="text-xs font-medium text-foreground">Chat</span>
               </button>
-              <button className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary flex items-center justify-center gap-2">
+              <button className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary active:scale-95 transition-all duration-150 flex items-center justify-center gap-2">
                 <Phone className="w-4 h-4 text-primary" />
                 <span className="text-xs font-medium text-foreground">Llamar</span>
               </button>
