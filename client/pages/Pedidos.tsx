@@ -57,10 +57,14 @@ export default function Pedidos() {
 
   return (
     <div className="min-h-screen pb-24 max-w-md mx-auto px-4 pt-6">
-      <h1 className="text-xl font-semibold mb-4">Pedidos Asignados</h1>
+      <h1 className="text-xl font-semibold mb-4 animate-fade-in">Pedidos Asignados</h1>
       <div className="space-y-3">
-        {augmentedOrders.map((o) => (
-          <article key={o.id} className="rounded-2xl border bg-white p-4 shadow-sm">
+        {augmentedOrders.map((o, idx) => (
+          <article
+            key={o.id}
+            className="rounded-2xl border bg-white p-4 shadow-sm card-animated hover:shadow-md active:scale-98 animate-scale-in"
+            style={{ animationDelay: `${idx * 80}ms` }}
+          >
             <div className="flex items-start justify-between gap-2">
               <div>
                 <h3 className="font-semibold">{o.customer}</h3>
@@ -74,13 +78,13 @@ export default function Pedidos() {
             <div className="mt-3 flex gap-2">
               <button
                 onClick={() => onAccept(o.id)}
-                className="flex-1 h-11 rounded-xl bg-primary text-primary-foreground font-medium shadow hover:opacity-95 active:opacity-90"
+                className="flex-1 h-11 rounded-xl bg-primary text-primary-foreground font-medium shadow hover:shadow-md hover:opacity-95 active:scale-95 transition-all duration-150 btn-ripple"
               >
                 Aceptar
               </button>
               <button
                 onClick={() => onReject(o.id)}
-                className="flex-1 h-11 rounded-xl bg-muted text-foreground font-medium hover:bg-gray-200 active:opacity-90"
+                className="flex-1 h-11 rounded-xl bg-muted text-foreground font-medium hover:bg-gray-200 active:scale-95 transition-all duration-150 btn-ripple"
               >
                 Rechazar
               </button>
