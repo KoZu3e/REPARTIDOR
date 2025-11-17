@@ -75,8 +75,11 @@ export default function Ganancias() {
   return (
     <div className="min-h-screen bg-white pb-24">
       {/* Header */}
-      <header className="flex items-center gap-3 px-4 py-4 border-b">
-        <button onClick={() => navigate(-1)} className="p-2 hover:bg-secondary rounded-lg">
+      <header className="flex items-center gap-3 px-4 py-4 border-b animate-fade-in">
+        <button
+          onClick={() => navigate(-1)}
+          className="p-2 hover:bg-secondary rounded-lg transition-colors duration-150 active:scale-95"
+        >
           <ArrowLeft className="w-5 h-5" />
         </button>
         <h1 className="text-2xl font-semibold">Ganancias</h1>
@@ -84,26 +87,27 @@ export default function Ganancias() {
 
       <main className="max-w-md mx-auto px-4 py-6 space-y-6">
         {/* Earnings Banner */}
-        <div className="rounded-2xl bg-primary text-primary-foreground p-6 shadow-lg">
+        <div className="rounded-2xl bg-primary text-primary-foreground p-6 shadow-lg animate-slide-in-up" style={{ animationDelay: "50ms" }}>
           <p className="text-sm opacity-90 mb-1">Ganancia total del {filter === "day" ? "día" : filter === "week" ? "semana" : "mes"}</p>
           <div className="flex items-center justify-between">
             <h2 className="text-4xl font-bold">${current.total.toLocaleString("es-CL")}</h2>
-            <TrendingUp className="w-10 h-10 opacity-80" />
+            <TrendingUp className="w-10 h-10 opacity-80 animate-bounce-subtle" />
           </div>
           <p className="text-xs opacity-80 mt-2">CLP</p>
         </div>
 
         {/* Filter Chips */}
-        <div className="flex gap-2 justify-center">
-          {(["day", "week", "month"] as FilterType[]).map((f) => (
+        <div className="flex gap-2 justify-center animate-scale-in" style={{ animationDelay: "100ms" }}>
+          {(["day", "week", "month"] as FilterType[]).map((f, i) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 filter === f
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-white border border-border text-foreground hover:bg-secondary"
+                  ? "bg-primary text-primary-foreground shadow-md scale-105"
+                  : "bg-white border border-border text-foreground hover:bg-secondary active:scale-95"
               }`}
+              style={{ transitionDelay: `${i * 30}ms` }}
             >
               {f === "day" ? "Día" : f === "week" ? "Semana" : "Mes"}
             </button>
@@ -111,15 +115,26 @@ export default function Ganancias() {
         </div>
 
         {/* Chart */}
-        <div className="rounded-2xl border bg-white p-4">
+        <div className="rounded-2xl border bg-white p-4 card-animated animate-scale-in" style={{ animationDelay: "150ms" }}>
           <h3 className="text-sm font-semibold mb-4">Distribución de ganancias</h3>
           <div className="flex items-end justify-around h-32 gap-1">
             {current.chartData.map((value, i) => (
-              <div key={i} className="flex flex-col items-center gap-2 flex-1">
+              <div
+                key={i}
+                className="flex flex-col items-center gap-2 flex-1 animate-scale-in"
+                style={{
+                  animationDelay: `${200 + i * 40}ms`,
+                  transformOrigin: "center bottom",
+                }}
+              >
                 <div className="flex-1 flex items-end justify-center w-full">
                   <div
-                    className="w-6 bg-primary rounded-t-lg transition-all hover:opacity-80"
-                    style={{ height: `${(value / maxValue) * 100}%` }}
+                    className="w-6 bg-primary rounded-t-lg transition-all hover:opacity-80 hover:scale-110"
+                    style={{
+                      height: `${(value / maxValue) * 100}%`,
+                      animation: `slide-in-up 0.5s ease-out forwards`,
+                      animationDelay: `${200 + i * 50}ms`,
+                    }}
                     title={`${value}K`}
                   />
                 </div>
@@ -130,17 +145,20 @@ export default function Ganancias() {
         </div>
 
         {/* Earnings Details */}
-        <div className="rounded-2xl border bg-white p-4">
+        <div className="rounded-2xl border bg-white p-4 card-animated animate-scale-in" style={{ animationDelay: "250ms" }}>
           <h3 className="text-sm font-semibold mb-3">Detalle de pedidos</h3>
           <div className="space-y-2 max-h-48 overflow-y-auto">
-            {current.entries.map((entry) => (
+            {current.entries.map((entry, idx) => (
               <div
                 key={entry.id}
-                className="flex items-center justify-between p-3 rounded-xl hover:bg-secondary transition-colors border border-border/50"
+                className="flex items-center justify-between p-3 rounded-xl hover:bg-secondary transition-all duration-200 border border-border/50 card-animated animate-scale-in active:scale-98"
+                style={{ animationDelay: `${300 + idx * 60}ms` }}
               >
                 <div>
                   <p className="text-sm font-medium">{entry.id}</p>
-                  <p className="text-xs text-muted-foreground">{entry.date} • {entry.time}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {entry.date} • {entry.time}
+                  </p>
                   <p className="text-xs text-muted-foreground">{entry.address}</p>
                 </div>
                 <p className="font-bold text-primary">${entry.amount.toLocaleString("es-CL")}</p>
@@ -150,7 +168,10 @@ export default function Ganancias() {
         </div>
 
         {/* Summary */}
-        <div className="rounded-2xl border bg-secondary p-4">
+        <div
+          className="rounded-2xl border bg-secondary p-4 card-animated animate-scale-in"
+          style={{ animationDelay: "300ms" }}
+        >
           <h3 className="text-xs font-medium text-muted-foreground uppercase mb-3">Resumen del período</h3>
           <div className="space-y-2">
             <div className="flex justify-between items-center">
@@ -161,7 +182,9 @@ export default function Ganancias() {
               <span className="text-muted-foreground">Total de pedidos completados: {current.orders}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Promedio por pedido: ${current.average.toLocaleString("es-CL")} CLP</span>
+              <span className="text-muted-foreground">
+                Promedio por pedido: ${current.average.toLocaleString("es-CL")} CLP
+              </span>
             </div>
           </div>
         </div>
@@ -169,7 +192,8 @@ export default function Ganancias() {
         {/* CTA Button */}
         <button
           onClick={handleViewHistory}
-          className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-95 active:opacity-90"
+          className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:shadow-md hover:opacity-95 active:scale-95 transition-all duration-150 btn-ripple animate-scale-in"
+          style={{ animationDelay: "350ms" }}
         >
           Ver historial completo
         </button>
