@@ -24,6 +24,7 @@ interface DeliveryState {
   acceptOrder: (id: string) => void;
   rejectOrder: (id: string) => void;
   completeOrder: (id: string) => void;
+  orderHistory: Order[];
 }
 
 const DeliveryContext = createContext<DeliveryState | undefined>(undefined);
