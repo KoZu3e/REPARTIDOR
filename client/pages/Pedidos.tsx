@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDelivery } from "@/context/delivery";
+import { Clock } from "lucide-react";
 import Modal from "@/components/Modal";
+import OrderHistory from "@/components/OrderHistory";
 
 export default function Pedidos() {
   const { orders, acceptOrder, rejectOrder } = useDelivery();
