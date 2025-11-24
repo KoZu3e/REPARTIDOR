@@ -11,6 +11,7 @@ export default function Pedidos() {
   const [incomingId, setIncomingId] = useState<string | null>(null);
   const [timer, setTimer] = useState(20);
   const [showToast, setShowToast] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
 
   // Simulate a new incoming order once after mount
   useEffect(() => {
