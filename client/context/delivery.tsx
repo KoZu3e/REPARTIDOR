@@ -182,8 +182,8 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
   };
 
   const value: DeliveryState = useMemo(
-    () => ({ driverName: "Josué", status, setStatus, orders, acceptOrder, rejectOrder, completeOrder }),
-    [status, orders],
+    () => ({ driverName: "Josué", status, setStatus, orders, acceptOrder, rejectOrder, completeOrder, orderHistory }),
+    [status, orders, orderHistory],
   );
 
   return <DeliveryContext.Provider value={value}>{children}</DeliveryContext.Provider>;
