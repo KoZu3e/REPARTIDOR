@@ -60,7 +60,16 @@ export default function Pedidos() {
 
   return (
     <div className="min-h-screen pb-24 max-w-md mx-auto px-4 pt-6">
-      <h1 className="text-xl font-semibold mb-4 animate-fade-in">Pedidos Asignados</h1>
+      <div className="flex items-center justify-between mb-4 animate-fade-in">
+        <h1 className="text-xl font-semibold">Pedidos Asignados</h1>
+        <button
+          onClick={() => setShowHistory(true)}
+          className="h-10 px-4 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow hover:shadow-md hover:opacity-95 active:scale-95 transition-all duration-150 flex items-center gap-2 btn-ripple"
+        >
+          <Clock className="w-4 h-4" />
+          <span>Historial</span>
+        </button>
+      </div>
       <div className="space-y-3">
         {augmentedOrders.map((o, idx) => (
           <article
