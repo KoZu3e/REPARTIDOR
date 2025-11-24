@@ -131,6 +131,8 @@ export default function Pedidos() {
           ✓ Pedido aceptado
         </div>
       )}
+
+      <OrderHistory open={showHistory} onClose={() => setShowHistory(false)} />
     </div>
   );
 }
