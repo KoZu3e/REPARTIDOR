@@ -45,15 +45,15 @@ const AppRoutes = () => {
 };
 
 const App = () => (
-  <AuthProvider>
-    <QueryClientProvider client={queryClient}>
-      <DeliveryProvider>
-        <BrowserRouter>
+  <BrowserRouter>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <DeliveryProvider>
           <AppRoutes />
-        </BrowserRouter>
-      </DeliveryProvider>
-    </QueryClientProvider>
-  </AuthProvider>
+        </DeliveryProvider>
+      </QueryClientProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );
 
 export default App;
