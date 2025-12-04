@@ -35,6 +35,7 @@ const DeliveryContext = createContext<DeliveryState | undefined>(undefined);
 
 export function DeliveryProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<DriverStatus>("Disponible");
+  const [activeOrderId, setActiveOrderId] = useState<string | null>(null);
   const [orders, setOrders] = useState<Order[]>([
     {
       id: "ORD-1001",
@@ -43,6 +44,7 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
       distanceKm: 2.1,
       earnings: 6500,
       status: "pendiente",
+      phone: "+56987654321",
     },
     {
       id: "ORD-1002",
@@ -51,6 +53,7 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
       distanceKm: 3.4,
       earnings: 5200,
       status: "pendiente",
+      phone: "+56912345678",
     },
   ]);
 
