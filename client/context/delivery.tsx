@@ -187,6 +187,7 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
   const completeOrder = (id: string) => {
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status: "completado" } : o)));
     setStatus("Disponible");
+    setActiveOrderId(null);
   };
 
   const getActiveOrder = () => orders.find((o) => o.id === activeOrderId);
