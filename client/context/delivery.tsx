@@ -9,6 +9,7 @@ export interface Order {
   distanceKm: number;
   earnings: number;
   status: "pendiente" | "aceptado" | "rechazado" | "completado";
+  phone?: string;
   date?: string;
   pickupAddress?: string;
   deliveryAddress?: string;
