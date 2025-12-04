@@ -182,6 +182,9 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
 
   const rejectOrder = (id: string) => {
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status: "rechazado" } : o)));
+    if (activeOrderId === id) {
+      setActiveOrderId(null);
+    }
   };
 
   const completeOrder = (id: string) => {
