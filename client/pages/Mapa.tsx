@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import { useDelivery } from "@/context/delivery";
 import { MessageCircle, Phone, MapPin } from "lucide-react";
+import ChatModal from "@/components/ChatModal";
+import CallModal from "@/components/CallModal";
 
 export default function Mapa() {
-  const { acceptOrder } = useDelivery();
+  const { acceptOrder, getActiveOrder } = useDelivery();
   const [timer, setTimer] = useState(28);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [showCall, setShowCall] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const activeOrder = getActiveOrder();
 
   useEffect(() => {
     const interval = setInterval(() => {
