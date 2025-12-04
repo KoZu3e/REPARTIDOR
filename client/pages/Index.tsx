@@ -16,6 +16,13 @@ export default function Index() {
   return (
     <div className="min-h-screen pb-20">
       <header className="max-w-md mx-auto px-4 pt-6">
+        <div className="flex justify-center mb-4 opacity-75">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F807c8a1bdd634c988ff9042c86797052%2F0bcd258d46504ba8a8ec6caf7d2d0053?format=webp&width=800"
+            alt="El Comilón Restaurant"
+            className="h-16 w-auto"
+          />
+        </div>
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-semibold">¡Hola, {driverName}! 👋</h1>
