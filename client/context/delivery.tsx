@@ -177,6 +177,7 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
   const acceptOrder = (id: string) => {
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status: "aceptado" } : o)));
     setStatus("En entrega");
+    setActiveOrderId(id);
   };
 
   const rejectOrder = (id: string) => {
