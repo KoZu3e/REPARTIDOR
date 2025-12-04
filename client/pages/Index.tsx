@@ -5,7 +5,9 @@ import { useState } from "react";
 
 export default function Index() {
   const { driverName, status, setStatus } = useDelivery();
-  const [available, setAvailable] = useState(status !== "Ocupado" && status !== "En entrega");
+  const [available, setAvailable] = useState(
+    status !== "Ocupado" && status !== "En entrega",
+  );
 
   const toggleAvailable = () => {
     const next = !available;
@@ -34,8 +36,8 @@ export default function Index() {
                 status === "En entrega"
                   ? "bg-primary/10 text-primary"
                   : available
-                  ? "bg-green-100 text-green-700"
-                  : "bg-amber-100 text-amber-700"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-amber-100 text-amber-700"
               }`}
             >
               {status}
@@ -70,7 +72,9 @@ export default function Index() {
               </div>
               <div>
                 <p className="font-medium">Pedidos Asignados</p>
-                <p className="text-xs text-muted-foreground">Revisa y gestiona pedidos</p>
+                <p className="text-xs text-muted-foreground">
+                  Revisa y gestiona pedidos
+                </p>
               </div>
             </div>
           </Link>
@@ -86,7 +90,9 @@ export default function Index() {
               </div>
               <div>
                 <p className="font-medium">Mapa y Ruta</p>
-                <p className="text-xs text-muted-foreground">Encuentra el mejor camino</p>
+                <p className="text-xs text-muted-foreground">
+                  Encuentra el mejor camino
+                </p>
               </div>
             </div>
           </Link>
@@ -102,7 +108,9 @@ export default function Index() {
               </div>
               <div>
                 <p className="font-medium">Mis Ganancias</p>
-                <p className="text-xs text-muted-foreground">Resumen y filtros</p>
+                <p className="text-xs text-muted-foreground">
+                  Resumen y filtros
+                </p>
               </div>
             </div>
           </Link>
@@ -118,13 +126,18 @@ export default function Index() {
               </div>
               <div>
                 <p className="font-medium">Perfil</p>
-                <p className="text-xs text-muted-foreground">Información personal</p>
+                <p className="text-xs text-muted-foreground">
+                  Información personal
+                </p>
               </div>
             </div>
           </Link>
         </section>
 
-        <section className="rounded-2xl bg-white p-4 shadow-sm border animate-scale-in" style={{ animationDelay: "200ms" }}>
+        <section
+          className="rounded-2xl bg-white p-4 shadow-sm border animate-scale-in"
+          style={{ animationDelay: "200ms" }}
+        >
           <h2 className="font-semibold mb-2">Consejos</h2>
           <ul className="text-sm text-muted-foreground list-disc ml-5 space-y-1">
             <li>Activa tu disponibilidad para recibir pedidos.</li>

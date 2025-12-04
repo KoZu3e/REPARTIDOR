@@ -175,20 +175,26 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
   ]);
 
   const acceptOrder = (id: string) => {
-    setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status: "aceptado" } : o)));
+    setOrders((prev) =>
+      prev.map((o) => (o.id === id ? { ...o, status: "aceptado" } : o)),
+    );
     setStatus("En entrega");
     setActiveOrderId(id);
   };
 
   const rejectOrder = (id: string) => {
-    setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status: "rechazado" } : o)));
+    setOrders((prev) =>
+      prev.map((o) => (o.id === id ? { ...o, status: "rechazado" } : o)),
+    );
     if (activeOrderId === id) {
       setActiveOrderId(null);
     }
   };
 
   const completeOrder = (id: string) => {
-    setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status: "completado" } : o)));
+    setOrders((prev) =>
+      prev.map((o) => (o.id === id ? { ...o, status: "completado" } : o)),
+    );
     setStatus("Disponible");
     setActiveOrderId(null);
   };
@@ -212,7 +218,11 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
     [status, orders, orderHistory, activeOrderId],
   );
 
-  return <DeliveryContext.Provider value={value}>{children}</DeliveryContext.Provider>;
+  return (
+    <DeliveryContext.Provider value={value}>
+      {children}
+    </DeliveryContext.Provider>
+  );
 }
 
 export function useDelivery() {

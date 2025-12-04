@@ -33,18 +33,24 @@ export default function CallModal({
       <div className="w-full max-w-sm mx-4 md:mx-0 rounded-2xl bg-white overflow-hidden animate-scale-in">
         <div className="p-8 flex flex-col items-center text-center">
           {/* Title */}
-          <h2 className="text-xl font-semibold text-foreground mb-2">{customerName}</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-2">
+            {customerName}
+          </h2>
           <p className="text-sm text-muted-foreground mb-6">{customerPhone}</p>
 
           {/* Status */}
           <div className="mb-8">
-            <p className="text-lg font-semibold text-primary mb-2">Llamando...</p>
+            <p className="text-lg font-semibold text-primary mb-2">
+              Llamando...
+            </p>
             <p className="text-xs text-muted-foreground">(Simulado)</p>
           </div>
 
           {/* Duration */}
           <div className="bg-gray-50 rounded-2xl px-6 py-4 mb-8 w-full">
-            <p className="text-3xl font-bold text-primary text-center font-mono">{formatDuration(duration)}</p>
+            <p className="text-3xl font-bold text-primary text-center font-mono">
+              {formatDuration(duration)}
+            </p>
           </div>
 
           {/* Animated pulse circle */}
@@ -52,7 +58,9 @@ export default function CallModal({
             <div className="relative w-20 h-20">
               <div
                 className="absolute inset-0 rounded-full bg-primary/20 animate-pulse"
-                style={{ animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite" }}
+                style={{
+                  animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                }}
               />
               <div className="absolute inset-3 rounded-full bg-primary/40" />
               <div className="absolute inset-4 rounded-full bg-primary flex items-center justify-center">
