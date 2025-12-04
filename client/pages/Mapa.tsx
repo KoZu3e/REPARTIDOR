@@ -21,6 +21,33 @@ export default function Mapa() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (toastMessage) {
+      const timeout = setTimeout(() => setToastMessage(null), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [toastMessage]);
+
+  const handleChatClick = () => {
+    if (!activeOrder) {
+      setToastMessage("No hay un pedido activo para chatear.");
+      return;
+    }
+    setShowChat(true);
+  };
+
+  const handleCallClick = () => {
+    if (!activeOrder) {
+      setToastMessage("No hay un pedido activo para llamar.");
+      return;
+    }
+    if (!activeOrder.phone) {
+      setToastMessage("El cliente no tiene un número disponible.");
+      return;
+    }
+    setShowCall(true);
+  };
+
   const handleTakePedido = () => {
     acceptOrder("ORD-1001");
     setShowSuccess(true);
