@@ -1,3 +1,6 @@
+---
+---
+
 # Animation System Documentation
 
 ## Overview
