@@ -221,6 +221,31 @@ export default function Mapa() {
           ✓ Pedido aceptado - En proceso de entrega
         </div>
       )}
+
+      {/* Toast Notifications */}
+      {toastMessage && (
+        <div className="fixed top-4 left-4 right-4 z-50 max-w-md mx-auto bg-yellow-100 text-yellow-800 px-4 py-3 rounded-xl shadow-lg animate-pulse">
+          {toastMessage}
+        </div>
+      )}
+
+      {/* Modals */}
+      {activeOrder && (
+        <>
+          <ChatModal
+            open={showChat}
+            onClose={() => setShowChat(false)}
+            customerName={activeOrder.customer}
+            orderId={activeOrder.id}
+          />
+          <CallModal
+            open={showCall}
+            onClose={() => setShowCall(false)}
+            customerName={activeOrder.customer}
+            customerPhone={activeOrder.phone || ""}
+          />
+        </>
+      )}
     </div>
   );
 }
