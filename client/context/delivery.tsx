@@ -188,9 +188,23 @@ export function DeliveryProvider({ children }: { children: ReactNode }) {
     setStatus("Disponible");
   };
 
+  const getActiveOrder = () => orders.find((o) => o.id === activeOrderId);
+
   const value: DeliveryState = useMemo(
-    () => ({ driverName: "Josué", status, setStatus, orders, acceptOrder, rejectOrder, completeOrder, orderHistory }),
-    [status, orders, orderHistory],
+    () => ({
+      driverName: "Josué",
+      status,
+      setStatus,
+      orders,
+      acceptOrder,
+      rejectOrder,
+      completeOrder,
+      orderHistory,
+      activeOrderId,
+      setActiveOrderId,
+      getActiveOrder,
+    }),
+    [status, orders, orderHistory, activeOrderId],
   );
 
   return <DeliveryContext.Provider value={value}>{children}</DeliveryContext.Provider>;
