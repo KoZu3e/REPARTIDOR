@@ -196,11 +196,17 @@ export default function Mapa() {
               Tomar Pedido
             </button>
             <div className="flex gap-2">
-              <button className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary active:scale-95 transition-all duration-150 flex items-center justify-center gap-2">
+              <button
+                onClick={handleChatClick}
+                className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary active:scale-95 transition-all duration-150 flex items-center justify-center gap-2"
+              >
                 <MessageCircle className="w-4 h-4 text-primary" />
                 <span className="text-xs font-medium text-foreground">Chat</span>
               </button>
-              <button className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary active:scale-95 transition-all duration-150 flex items-center justify-center gap-2">
+              <button
+                onClick={handleCallClick}
+                className="flex-1 h-10 rounded-lg border border-border hover:bg-secondary active:scale-95 transition-all duration-150 flex items-center justify-center gap-2"
+              >
                 <Phone className="w-4 h-4 text-primary" />
                 <span className="text-xs font-medium text-foreground">Llamar</span>
               </button>
