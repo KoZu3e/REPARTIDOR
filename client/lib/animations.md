@@ -55,7 +55,7 @@ This app uses a comprehensive animation system based on Android Material Motion 
   items.map((item, idx) => (
     <div
       className="animate-scale-in"
-      style={{ animationDelay: `${idx * 80}ms` }}
+      style={{ animationDelay: `\${idx * 80}ms` }}
     >
       {item}
     </div>
